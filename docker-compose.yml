@@ -1,0 +1,32 @@
+# version: "3"
+services:
+
+#  s3manager:
+#    container_name: s3manager
+#    image: cloudlena/s3manager
+#    restart: unless-stopped
+#    ports:
+#      - "8080:8080"
+#    environment:
+#      - ENDPOINT=garage:3900
+#      - ACCESS_KEY_ID=GKc98624849db70446555a905b
+#      - SECRET_ACCESS_KEY=934f97fb29df4f1da215e689c57ab5b42c4e42798841961e4df77d4d3ae6c828
+#      - USE_SSL=false
+#    depends_on:
+#      - garage
+
+  garage:
+    image: dxflrs/garage:v0.9.3
+    # network_mode: "host"
+    restart: unless-stopped
+    environment:
+      - GARAGE_ADMIN_TOKEN=test_admin_token
+    ports:
+      - "3900:3900"
+      - "3901:3901"
+      - "3902:3902"
+      - "3903:3903"
+    volumes:
+      - ./garage.toml:/etc/garage.toml
+      - ./meta:/var/lib/garage/meta
+      - ./data:/var/lib/garage/data

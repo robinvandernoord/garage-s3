@@ -1,0 +1,26 @@
+metadata_dir = "/var/lib/garage/meta"
+data_dir = "/var/lib/garage/data"
+db_engine = "lmdb"
+
+replication_mode = "none"
+# idk why rcp_ is needed without replication but ok 
+rpc_bind_addr = "[::]:3901"
+rpc_public_addr = "127.0.0.1:3901"
+rpc_secret = "****"
+
+compression_level = 2
+
+[s3_api]
+s3_region = "garage"
+api_bind_addr = "[::]:3900"
+root_domain = "api.s3.su6.nl"
+
+[s3_web]
+bind_addr = "[::]:3902"
+root_domain = "web.s3.su6.nl"
+index = "index.html"
+
+[admin]
+api_bind_addr = "0.0.0.0:3903"
+metrics_token = "****"
+admin_token = "****"
